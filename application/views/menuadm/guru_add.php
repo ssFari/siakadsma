@@ -49,28 +49,33 @@
                                     <div class="review-content-section">
                                         <div id="dropzone1" class="pro-ad addcoursepro">
                                                 <?php echo form_open_multipart("C_guru/add"); ?>
-                                                <?php echo validation_errors(); ?>
+                                                <!-- <?php echo validation_errors(); ?> -->
                                             <form action="#">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <div class="form-group">
                                                             <input type="hidden" name="kd_old" >
                                                             <input name="nip" type="text" class="form-control" placeholder="NIP" >
+                                                            <small class="text-danger pl-3"><?= form_error('nip'); ?></small>
                                                         </div>
                                                         <div class="form-group">
                                                             <input name="nama" type="text" class="form-control" placeholder="Nama" >
+                                                            <small class="text-danger pl-3"><?= form_error('nama'); ?></small>
                                                         </div>
                                                        <div class="form-group">
                                                             <input name="jk" type="text" class="form-control" placeholder="Jenis Kelamin" >
+                                                            <small class="text-danger pl-3"><?= form_error('jk'); ?></small>
                                                         </div>
                                                         <div class="form-group">
                                                             <input name="alamat" type="text" class="form-control" placeholder="Alamat" >
+                                                            <small class="text-danger pl-3"><?= form_error('alamat'); ?></small>
                                                         </div>
                                                         <!-- <div class="form-group">
                                                             <input name="foto" type="file" class="form-control" placeholder="Foto" >
                                                         </div> -->
                                                         <div class="form-group">
                                                             <input name="kode_kelas" type="text" class="form-control" placeholder="Kode Kelas" >
+                                                            <small class="text-danger pl-3"><?= form_error('kode_kelas'); ?></small>
                                                         </div>
                                                         <!-- <div class="form-group">
                                                             <input name="kode_mp" type="text" class="form-control" placeholder="MataPelajaran" >

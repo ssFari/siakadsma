@@ -5,6 +5,7 @@ class C_guru extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
+		$this->load->library('form_validation');
 		$this->load->model('M_guru');
 	}
 	
@@ -15,15 +16,26 @@ class C_guru extends CI_Controller {
 	}
 
 	public function add(){
-		$dat = array(
-			'nip' =>	$this->input->post('nip'),
-			'nama'	=>	$this->input->post('nama'),
-			'jk'	=>	$this->input->post('jk'),
-			'alamat'	=>	$this->input->post('alamat'),
-			'kode_kelas'	=>	$this->input->post('kode_kelas'),
-		);
-		$cek = $this->M_guru->insert($dat);
-		redirect('C_admin/guru');
+
+		$this->form_validation->set_rules('nip', 'nip', 'required|trim');
+		$this->form_validation->set_rules('nama', 'nama', 'required|trim');
+		$this->form_validation->set_rules('jk', 'jk', 'required|trim');
+		$this->form_validation->set_rules('alamat', 'alamat', 'required|trim');
+		$this->form_validation->set_rules('kode_kelas', 'kode_kelas', 'required|trim');
+
+		if ($this->form_validation->run() != false) {
+			$dat = array(
+				'nip' =>	$this->input->post('nip'),
+				'nama'	=>	$this->input->post('nama'),
+				'jk'	=>	$this->input->post('jk'),
+				'alamat'	=>	$this->input->post('alamat'),
+				'kode_kelas'	=>	$this->input->post('kode_kelas'),
+			);
+			$cek = $this->M_guru->insert($dat);
+			redirect('C_admin/guru');
+		}else{
+			$this->load->view('menuadm/guru_add');
+		}
 	}
 
 	public function update(){
