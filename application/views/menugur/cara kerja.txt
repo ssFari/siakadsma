@@ -1,0 +1,18 @@
+SELECT * FROM `guru` 
+	INNER JOIN `murid`
+    ON `guru`.`kode_jurusan` = `murid`.`kode_kelas`
+    
+    INNER JOIN `jadwal`
+    ON `murid`.`kode_kelas` = `jadwal`.`kode_kelas`
+    
+    INNER JOIN `mapel`
+    ON `jadwal`.`kode_mp` = `mapel`.`kode`
+    
+    INNER JOIN `presensi`
+    ON `presensi`.`kode_mp` = `mapel`.`kode`
+
+
+    nambahin guru.
+    nambah user dengan username pake nip
+    trus edit kelas sesuaikan nip wali dengan nip guru
+    tambah siswa sesuai kode kelas
